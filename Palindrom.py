@@ -9,8 +9,9 @@ def Palindrome(word):
 while True:
     
     word = input('Wprowadź słowo, które chcesz sprawdzić\n')
-
-    if Palindrome(word.lower().replace(' ', '')) == False: # .lower and .replace are used to make our function case and whitespace insensitive
+    word_t = ''.join(x for x in word if x.isalpha()).lower() # With this line, the function is completely insensitive to case and non-alphabetic characters.
+    
+    if Palindrome(word_t) == False:
         print(word + ' nie jest palindromem')
         continue
     else:
