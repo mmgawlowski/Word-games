@@ -10,7 +10,7 @@ while True:
     
     word = input('Wprowadź słowo, które chcesz sprawdzić\n')
 
-    if Palindrome(word.lower().replace(' ', '') == False: # .lower and .replace are used to make our function case and whitespace insensitive
+    if Palindrome(word.lower().replace(' ', '')) == False: # .lower and .replace are used to make our function case and whitespace insensitive
         print(word + ' nie jest palindromem')
         continue
     else:
