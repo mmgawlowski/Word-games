@@ -1,3 +1,4 @@
+import re    
 def Palindrome(word):
     n = len(word)
 
@@ -8,8 +9,15 @@ def Palindrome(word):
 
 while True:
     
-    word = input('Wprowadź słowo, które chcesz sprawdzić\n')
-    word_t = ''.join(x for x in word if x.isalpha()).lower() # With this line, the program is completely insensitive to case and non-alphabetic characters.
+    word = input('Wprowadź wyrażenie, które chcesz sprawdzić:\n')
+
+# Palindrome by definition should contain only letter, spaces and punctuation marks.
+
+    if re.search(r'[0-9~@#$%^&*+=<>{}~/|\[\]\\]', word) != None:
+        print('Wprowadzone wyrażenie powinno zawierać jedynie litery alfabetu i znaki interpunkcyjne')
+        continue
+    else:
+        word_t = ''.join(x for x in word if x.isalpha()).lower() # With this line, the program is almost completely insensitive to case and non-alphabetic characters.
     
     if Palindrome(word_t) == False:
         print(word + ' nie jest palindromem')
