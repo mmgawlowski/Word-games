@@ -22,6 +22,8 @@ while True:
     if Palindrome(word_t) == False:
         print(word + ' nie jest palindromem')
         continue
+    elif re.search('[a-zA-Z]', word) == None :
+        print('Znak interpunkcyjny nie jest palindromem')
     else:
         print(word + ' jest palindromem')
         continue
