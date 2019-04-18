@@ -7,7 +7,7 @@ def anagram(word_1, word_2):
   n = len(word_1)
   
   for i in range(n):
-    if re.findall(word_1[i], word_1) != re.findall(word_1[i], word_2,):
+    if re.findall(word_1[i], word_1) != re.findall(word_1[i], word_2):
       return False
   return True
 
