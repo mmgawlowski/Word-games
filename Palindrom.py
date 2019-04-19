@@ -2,7 +2,7 @@ import re
 def Palindrome(word):
     n = len(word)
     m = int(n / 2) + (n % 2 > 0)
-# Every pair of characters needs to be checked only once but "range()" accepts only integers. When "n" is an odd number then second part of equation become True what results in adding 1 to int(n/2), (False = 0).
+# Every pair of characters needs to be checked only once but "range()" accepts only integers. When "n" is an odd number then second part of equation becomes True what results in adding 1 to int(n/2), (False = 0).
 
     for i in range(m):
         if word[i] != word[-1-i]:
