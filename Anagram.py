@@ -4,11 +4,8 @@ def anagram(word_1, word_2):
   if len(word_1) != len(word_2):
     return False
   
-  n = len(word_1)
-  
-  for i in range(n):
-    if re.findall(word_1[i], word_1) != re.findall(word_1[i], word_2):
-      return False
+  if sorted(word_1) != sorted(word_2):
+    return False
   return True
 
 while True:
