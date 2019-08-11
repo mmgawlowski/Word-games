@@ -3,7 +3,6 @@ import re
 def anagram(word_1, word_2):
   if len(word_1) != len(word_2):
     return False
-  
   if sorted(word_1) != sorted(word_2):
     return False
   return True
