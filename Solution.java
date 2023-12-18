@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  Two strings are anagrams if they have the same characters in the same frequency, but the characters are in a different order. An example
@@ -35,12 +36,18 @@ public class Solution {
             throw new IllegalArgumentException("The 'words' array should contain from 1 to 104 elements.");
         }
 
+        if (Arrays.stream(words).anyMatch(w -> w.isEmpty() || w.length() > 50 || w.matches(".*[^a-z].*"))) {
+            String notAllowedWords = Arrays.stream(words)
+                                           .filter(w -> w.isEmpty() || w.length() > 50 || w.matches(".*[^a-z].*"))
+                                           .collect(Collectors.joining("\",\"", "\"", "\""));
+
+            throw new IllegalArgumentException("A word can only contain lowercase letters of" +
+                " the English alphabet and its length must be between one and 50 letters.\n" +
+                "These words don't comply with mentioned rules: " + notAllowedWords);
+        }
+
         Map<String, List<String>> anagramsMap = new HashMap<>();
         for (String word : words) {
-            if (word.isEmpty() || word.length() > 50 || word.matches(".*[^a-z].*")) {
-                throw new IllegalArgumentException("A word can only contain lowercase letters of" +
-                    " the English alphabet and its length must be between one and 50 letters.");
-            }
             char[] chars = word.toCharArray();
             Arrays.sort(chars);
             String key = new String(chars);
@@ -57,7 +64,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String[] words = {"pineapple", "satan", "restful", "cheater", "teacher", "santa", "fluster", "antas"};
+        String[] words = {"pineapple", "", "restful", "cheater", "teacher", "santa", "fluster", "antas"};
         System.out.print(getGroupedAnagrams(words));
     }
 }
