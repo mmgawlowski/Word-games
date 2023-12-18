@@ -32,14 +32,15 @@ import java.util.stream.Collectors;
  */
 public class Solution {
     public static List<List<String>> getGroupedAnagrams(String[] words) {
-        if (words.length < 1 || words.length > 104) {
+        if (words == null) {
+            System.out.println("The number of formed groups: 0");
+            return new ArrayList<>();
+        } else if (words.length < 1 || words.length > 104) {
             throw new IllegalArgumentException("The 'words' array should contain from 1 to 104 elements.");
-        }
-
-        if (Arrays.stream(words).anyMatch(w -> w.isEmpty() || w.length() > 50 || w.matches(".*[^a-z].*"))) {
+        } else if (Arrays.stream(words).anyMatch(w -> w.isEmpty() || w.length() > 50 || w.matches(".*[^a-z].*"))) {
             String notAllowedWords = Arrays.stream(words)
                                            .filter(w -> w.isEmpty() || w.length() > 50 || w.matches(".*[^a-z].*"))
-                                           .collect(Collectors.joining("\",\"", "\"", "\""));
+                                           .collect(Collectors.joining("', '", "'", "'"));
 
             throw new IllegalArgumentException("A word can only contain lowercase letters of" +
                 " the English alphabet and its length must be between one and 50 letters.\n" +
@@ -64,7 +65,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String[] words = {"pineapple", "", "restful", "cheater", "teacher", "santa", "fluster", "antas"};
+        String[] words = {"pineapple", "satan", "restful", "cheater", "teacher", "santa", "fluster", "antas"};
         System.out.print(getGroupedAnagrams(words));
     }
 }
